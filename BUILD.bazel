@@ -1,6 +1,7 @@
 load("@npm//@graphql-codegen/cli:index.bzl", "graphql_codegen")
+load("@build_bazel_rules_nodejs//:index.bzl", "npm_package_bin")
 
-graphql_codegen(
+npm_package_bin(
     name = "gen",
     outs = ["types.ts"],
     args = [
@@ -13,4 +14,6 @@ graphql_codegen(
         "@npm//@graphql-codegen/typescript",
         "@npm//@graphql-codegen/typescript-resolvers",
     ],
+    package = "@graphql-codegen/cli",
+    package_bin = "graphql-codegen",
 )
